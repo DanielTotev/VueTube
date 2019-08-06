@@ -13,24 +13,20 @@
 import Message from "./components/common/Message";
 import Navigation from "./components/common/Navigation";
 import Footer from "./components/common/Footer";
+import { messagingSetUp } from "./mixins/services/notificationService";
 import { isAuthenticated, clearCredentials } from "./mixins/services/userService";
 import { setTimeout } from 'timers';
 
-const messageStyles = {
-  error: 'alert alert-danger'
-};
+
 
 export default {
   name: "app",
   data() {
     return {
-      isLoggedIn: isAuthenticated(),
-      message: {
-        text: null,
-        style: null
-      }
+      isLoggedIn: isAuthenticated()
     }
   },
+  mixins: [messagingSetUp],
   components: {
     Navigation,
     Footer,
@@ -45,18 +41,7 @@ export default {
       clearCredentials();
       this.$router.history.push('login');
     },
-    clearMessageState() {
-      setTimeout(() => {
-        this.message.text = null;
-        this.message.style = null;
-      }, 3000);
-    },
-    handleMessageShow({ text, type }) {
-      console.log(text);
-      this.message.text = text;
-      this.message.style = messageStyles[type];
-      this.clearMessageState();
-    },
+
   }
 };
 </script>

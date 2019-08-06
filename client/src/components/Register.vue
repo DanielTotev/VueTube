@@ -90,11 +90,11 @@ export default {
     handleSubmit() {
       this.register()
         .then(data => {
-          console.log(data);
+          this.showNotification('success', 'User registered successfully!')
           this.$router.push('login');
         }).catch(err => {
-          console.log(err.response.data);
-          this.$emit('message-show', { type: 'error', text: err.response.data.message })
+          this.showNotification('error', err.response.data.message)
+          // this.$emit('message-show', { type: 'error', text:  })
         })
     }
   }
