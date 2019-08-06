@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="container-fluid">
-    <Navigation />
+    <Navigation  :isLoggedIn="isLoggedIn" @logout="handleLogout"/>
     <hr>
-      <router-view></router-view>
+      <router-view @login="handleLogin"></router-view>
     <hr>
     <Footer />
   </div>
@@ -11,12 +11,28 @@
 <script>
 import Navigation from "./components/common/Navigation";
 import Footer from "./components/common/Footer";
+import { isAuthenticated, clearCredentials } from "./mixins/services/userService";
 
 export default {
   name: "app",
+  data() {
+    return {
+      isLoggedIn: isAuthenticated
+    }
+  },
   components: {
     Navigation,
     Footer
+  },
+  methods: {
+    handleLogin() {
+      this.isLoggedIn = true;
+    },
+    handleLogout() {
+      this.isLoggedIn = false;
+      clearCredentials();
+      this.$router.history.push('login');
+    }
   }
 };
 </script>

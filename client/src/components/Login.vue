@@ -79,6 +79,8 @@ export default {
         .then(({ data }) => {
           const { token } = data;
           saveUserCredentials(token);
+          this.$router.push('home');
+          this.$emit('login');
         });
     }
   }

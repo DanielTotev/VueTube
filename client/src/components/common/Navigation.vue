@@ -15,15 +15,31 @@
 
     <div class="collapse navbar-collapse justify-content-end row" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active col-md-4">
-          <router-link class="nav-link h5" to="/">Home</router-link>
-        </li>
-        <li class="nav-item active col-md-4">
-          <router-link class="nav-link h5" to="/login">Login</router-link>
-        </li>
-        <li class="nav-item active col-md-4">
-          <router-link class="nav-link h5" to="/register">Register</router-link>
-        </li>
+        <template v-if="isLoggedIn">
+          <li class="nav-item active col-md-3">
+            <a class="nav-link h5" href="/">Home</a>
+          </li>
+          <li class="nav-item active col-md-3">
+            <a class="nav-link h5" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item active col-md-3">
+            <a class="nav-link h5" href="/upload-tube">Upload</a>
+          </li>
+          <li class="nav-item active col-md-3">
+            <a class="nav-link h5" href="#" @click.prevent="$emit('logout')">Logout</a>
+          </li>
+        </template>
+        <template v-else>
+          <li class="nav-item active col-md-4">
+            <router-link class="nav-link h5" to="/">Home</router-link>
+          </li>
+          <li class="nav-item active col-md-4">
+            <router-link class="nav-link h5" to="/login">Login</router-link>
+          </li>
+          <li class="nav-item active col-md-4">
+            <router-link class="nav-link h5" to="/register">Register</router-link>
+          </li>
+        </template>
       </ul>
     </div>
   </nav>
@@ -31,7 +47,13 @@
 
 <script>
 export default {
-  name: "navigation"
+  name: "navigation",
+  props: {
+    isLoggedIn: {
+      required: true,
+      type: Boolean
+    }
+  }
 };
 </script>
 

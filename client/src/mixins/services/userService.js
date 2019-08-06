@@ -25,8 +25,4 @@ export const loginUser = {
 
 export const saveUserCredentials = authtoken => localStorage.setItem('authtoken', authtoken);
 
-export const checkIfAuthtenticated = {
-  computed: {
-    isAuthenticated
-  }
-};
+export const clearCredentials = () => localStorage.clear();
