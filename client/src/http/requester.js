@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-axios.interceptors.response.use(function (response) {
-  return response;
-}, function(err) {
-  const { message } = err.response.data;
-  console.log(message);
-  return Promise.reject(err);
-});
+// axios.interceptors.response.use(function (response) {
+//   return response;
+// }, function(err) {
+//   const { message } = err.response.data;
+//   console.log(message);
+//   return Promise.reject(err);
+// });
 
 const defaultHeaders = {
   'Content-Type': 'application/json'

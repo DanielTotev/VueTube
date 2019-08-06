@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
         }
     
         if(userFromDb) {
-            return res.status(400).json({messsage: 'User already exists'});
+            return res.status(400).json({message: 'User already exists'});
         }
     
         console.log(password);
@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
         return res.status(200).json(createdUser);
     } catch(err) {
         console.log(err);
-        return res.status(500).send({ messsage: err.messsage });
+        return res.status(500).send({ message: err.message });
     }
 
 });
@@ -43,13 +43,13 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({ email });
     
         if(!user) {
-            return res.status(400).json({ messsage: 'Invalid credentials' });
+            return res.status(400).json({ message: 'Invalid credentials' });
         }
     
         const isValidPassword =  await user.isValidPassword(password);
     
         if(!isValidPassword) {
-            return res.status(400).json({ messsage: 'Invalid credentials' });
+            return res.status(400).json({ message: 'Invalid credentials' });
         }
     
         const payload = { _id: user._id, email: user.email };
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
     
         res.json({ token: `Bearer: ${token}` });
     } catch(err) {
-        return res.status(500).send({ messsage: err.messsage });
+        return res.status(500).send({ message: err.message });
     }
 });
 

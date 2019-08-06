@@ -1,28 +1,40 @@
 <template>
   <div id="app" class="container-fluid">
     <Navigation  :isLoggedIn="isLoggedIn" @logout="handleLogout"/>
+    <Message :text="message.text" :message-style="message.style" />
     <hr>
-      <router-view @login="handleLogin"></router-view>
+      <router-view @login="handleLogin" @message-show="handleMessageShow"></router-view>
     <hr>
     <Footer />
   </div>
 </template>
 
 <script>
+import Message from "./components/common/Message";
 import Navigation from "./components/common/Navigation";
 import Footer from "./components/common/Footer";
 import { isAuthenticated, clearCredentials } from "./mixins/services/userService";
+import { setTimeout } from 'timers';
+
+const messageStyles = {
+  error: 'alert alert-danger'
+};
 
 export default {
   name: "app",
   data() {
     return {
-      isLoggedIn: isAuthenticated
+      isLoggedIn: isAuthenticated(),
+      message: {
+        text: null,
+        style: null
+      }
     }
   },
   components: {
     Navigation,
-    Footer
+    Footer,
+    Message
   },
   methods: {
     handleLogin() {
@@ -32,7 +44,19 @@ export default {
       this.isLoggedIn = false;
       clearCredentials();
       this.$router.history.push('login');
-    }
+    },
+    clearMessageState() {
+      setTimeout(() => {
+        this.message.text = null;
+        this.message.style = null;
+      }, 3000);
+    },
+    handleMessageShow({ text, type }) {
+      console.log(text);
+      this.message.text = text;
+      this.message.style = messageStyles[type];
+      this.clearMessageState();
+    },
   }
 };
 </script>

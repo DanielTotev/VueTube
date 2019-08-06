@@ -93,7 +93,8 @@ export default {
           console.log(data);
           this.$router.push('login');
         }).catch(err => {
-          console.log(err);
+          console.log(err.response.data);
+          this.$emit('message-show', { type: 'error', text: err.response.data.message })
         })
     }
   }
