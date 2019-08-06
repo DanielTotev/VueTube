@@ -16,13 +16,13 @@
     <div class="collapse navbar-collapse justify-content-end row" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active col-md-4">
-          <a class="nav-link h5" href="/">Home</a>
+          <router-link class="nav-link h5" to="/">Home</router-link>
         </li>
         <li class="nav-item active col-md-4">
-          <a class="nav-link h5" href="/login">Login</a>
+          <router-link class="nav-link h5" to="/login">Login</router-link>
         </li>
         <li class="nav-item active col-md-4">
-          <a class="nav-link h5" href="/register">Register</a>
+          <router-link class="nav-link h5" to="/register">Register</router-link>
         </li>
       </ul>
     </div>
