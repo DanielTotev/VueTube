@@ -3,12 +3,18 @@ const app = express();
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 const port = process.env.PORT || 3000;
 
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 
 app.use(passport.initialize());
 require('./config/auth')(passport);

@@ -14,6 +14,10 @@ const VideoSchema = new Schema({
         type: String,
         required: true
     },
+    thumbnail: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: true
@@ -21,6 +25,10 @@ const VideoSchema = new Schema({
     uploaderId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    views: {
+        type: Number,
+        default: 0
     }
 });
 
