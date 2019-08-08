@@ -23,6 +23,8 @@ export const loginUser = {
   }
 }
 
-export const saveUserCredentials = authtoken => localStorage.setItem('authtoken', authtoken);
+export const saveUserCredentials = authtoken => localStorage.setItem('authtoken', authtoken.split(' ')[1]);
 
 export const clearCredentials = () => localStorage.clear();
+
+export const getToken = () => localStorage.getItem('authtoken');

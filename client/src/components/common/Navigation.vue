@@ -23,7 +23,7 @@
             <a class="nav-link h5" href="/profile">Profile</a>
           </li>
           <li class="nav-item active col-md-3">
-            <a class="nav-link h5" href="/upload-tube">Upload</a>
+            <router-link class="nav-link h5" to="/video-upload">Upload</router-link>
           </li>
           <li class="nav-item active col-md-3">
             <a class="nav-link h5" href="#" @click.prevent="$emit('logout')">Logout</a>

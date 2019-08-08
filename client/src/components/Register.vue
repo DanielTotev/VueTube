@@ -93,8 +93,7 @@ export default {
           this.showNotification('success', 'User registered successfully!')
           this.$router.push('login');
         }).catch(err => {
-          this.showNotification('error', err.response.data.message)
-          // this.$emit('message-show', { type: 'error', text:  })
+          this.showNotification('error', err.response.data.message);
         })
     }
   }

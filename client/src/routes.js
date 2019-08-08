@@ -1,7 +1,8 @@
-import Index from './components/Index';
-import Register from './components/Register';
-import Login from './components/Login';
-import Test from './components/Test';
+import Index from "./components/Index";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Test from "./components/Test";
+import UploadVideo from "./components/video/UploadVideo";
 
 export const routes = [
     {
@@ -32,5 +33,11 @@ export const routes = [
             requiresAuth: true
         }
     },
-    
+    {
+        path: '/video-upload',
+        component: UploadVideo,
+        meta: {
+            requiresAuth: true
+        }
+    },
 ];

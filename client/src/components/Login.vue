@@ -81,6 +81,7 @@ export default {
           saveUserCredentials(token);
           this.$router.push('home');
           this.$emit('login');
+          this.showNotification('success', 'Login successfully!')
         });
     }
   }
