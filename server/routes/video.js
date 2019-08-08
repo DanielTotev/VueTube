@@ -33,4 +33,9 @@ router.post('/upload', passport.authenticate('jwt', { session: false }),  async 
     }
 });
 
+router.get('/getAll', async (req, res) => {
+    const videos = await Video.find({});
+    res.status(200).json(videos);
+});
+
 module.exports = router;
