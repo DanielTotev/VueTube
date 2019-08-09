@@ -41,7 +41,7 @@ router.get('/getAll', async (req, res) => {
 router.get('/details/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const video = await Video.find({ _id: id });
+        const video = await Video.findOne({ _id: id });
         video.views++;
         await video.save();
         res.status(200).send({ video });

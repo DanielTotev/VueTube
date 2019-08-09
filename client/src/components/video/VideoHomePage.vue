@@ -1,8 +1,8 @@
 <template>
   <div class="card" style="width: 18rem">
-    <a href="/tube/details">
+    <router-link :to="detailsUrl">
       <img class="card-img-top" height="160px" :src="video.thumbnail" alt="Card image cap" />
-    </a>
+    </router-link>
     <div class="card-body">
       <p class="card-text">
         {{video.title}}
@@ -20,6 +20,11 @@ export default {
     video: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    detailsUrl() {
+      return `/video/details/${this.video._id}`;
     }
   }
 };
