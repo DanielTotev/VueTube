@@ -17,7 +17,7 @@
       <ul class="navbar-nav ml-auto">
         <template v-if="isLoggedIn">
           <li class="nav-item active col-md-3">
-            <a class="nav-link h5" href="/">Home</a>
+            <router-link class="nav-link h5" to="/home">Home</router-link>
           </li>
           <li class="nav-item active col-md-3">
             <a class="nav-link h5" href="/profile">Profile</a>

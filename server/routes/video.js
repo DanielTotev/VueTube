@@ -15,7 +15,7 @@ router.post('/upload', passport.authenticate('jwt', { session: false }),  async 
     const thumbnail  = req.files.thumbnail;
     const video = req.files.video;
     try {
-        const thumbnailUploadResult = await cloudinary.uploader.upload(thumbnail.tempFilePath)
+        const thumbnailUploadResult = await cloudinary.uploader.upload(thumbnail.tempFilePath);
         const videoUploadResult = await cloudinary.uploader.upload(video.tempFilePath, { resource_type: "video" });
 
         const createdVideo = await Video.create({
@@ -36,6 +36,18 @@ router.post('/upload', passport.authenticate('jwt', { session: false }),  async 
 router.get('/getAll', async (req, res) => {
     const videos = await Video.find({});
     res.status(200).json(videos);
+});
+
+router.get('/details/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const video = await Video.find({ _id: id });
+        video.views++;
+        await video.save();
+        res.status(200).send({ video });
+    } catch(err) {
+        res.status(400).send({ message: err.message });
+    }
 });
 
 module.exports = router;

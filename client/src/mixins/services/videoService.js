@@ -6,6 +6,7 @@ const authHeader = {
 };
 
 const VIDEO_UPLOAD_URL = "http://localhost:3000/api/videos/upload";
+const VIDEO_GET_ALL_URL = "http://localhost:3000/api/videos/getAll";
 
 export const uploadVideo = {
     methods: {
@@ -21,3 +22,11 @@ export const uploadVideo = {
         }
     }
 };
+
+export const getVideos = {
+    methods: {
+        getAllVideos() {
+            return requester.doGet(VIDEO_GET_ALL_URL, authHeader);
+        }
+    }
+}

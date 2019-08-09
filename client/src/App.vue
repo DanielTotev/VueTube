@@ -17,13 +17,11 @@ import { messagingSetUp } from "./mixins/services/notificationService";
 import { isAuthenticated, clearCredentials } from "./mixins/services/userService";
 import { setTimeout } from 'timers';
 
-
-
 export default {
   name: "app",
   data() {
     return {
-      isLoggedIn: isAuthenticated()
+      isLoggedIn: isAuthenticated(),
     }
   },
   mixins: [messagingSetUp],
