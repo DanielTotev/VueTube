@@ -4,6 +4,7 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 import UploadVideo from "./views/video/UploadVideo";
 import VideoDetails from "./views/video/VideoDetails";
+import Profile from "./views/profile/Profile";
 
 export const routes = [
     {
@@ -44,6 +45,13 @@ export const routes = [
     {
         path: '/video/details/:id',
         component: VideoDetails,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/profile',
+        component: Profile,
         meta: {
             requiresAuth: true
         }

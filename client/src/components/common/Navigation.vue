@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand h4" href="/">MeTube&trade;</a>
+    <router-link class="navbar-brand h4" to="/">MeTube&trade;</router-link>
 
     <div class="collapse navbar-collapse justify-content-end row" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
@@ -20,7 +20,7 @@
             <router-link class="nav-link h5" to="/home">Home</router-link>
           </li>
           <li class="nav-item active col-md-3">
-            <a class="nav-link h5" href="/profile">Profile</a>
+            <router-link class="nav-link h5" to="/profile">Profile</router-link>
           </li>
           <li class="nav-item active col-md-3">
             <router-link class="nav-link h5" to="/video-upload">Upload</router-link>

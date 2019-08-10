@@ -33,12 +33,12 @@ router.post('/upload', passport.authenticate('jwt', { session: false }),  async 
     }
 });
 
-router.get('/getAll', async (req, res) => {
+router.get('/getAll', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const videos = await Video.find({});
     res.status(200).json(videos);
 });
 
-router.get('/details/:id', async (req, res) => {
+router.get('/details/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const id = req.params.id;
     try {
         const video = await Video.findOne({ _id: id });
