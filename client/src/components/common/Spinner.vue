@@ -1,5 +1,8 @@
 <template>
-  <div class="loader"></div>
+  <div>
+    <h1>Loading...</h1>
+    <div class="loader" style="margin:0 auto;"></div>
+  </div>
 </template>
 
 <script>
