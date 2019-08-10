@@ -20,13 +20,17 @@
                   <label class="control-label h3 mb-2" for="title">Title</label>
                   <div class="controls">
                     <input
-                      v-model="title"
+                      v-model="$v.title.$model"
                       type="text"
                       id="title"
                       name="title"
                       placeholder
                       class="input-xlarge"
                     />
+                    <div
+                      class="alert alert-danger"
+                      v-if="$v.title.$error"
+                    >Title should be at least 3 symbols long!</div>
                   </div>
                 </div>
                 <br />
@@ -34,13 +38,17 @@
                   <label class="control-label h3 mb-2" for="author">Author</label>
                   <div class="controls">
                     <input
-                      v-model="author"
+                      v-model="$v.author.$model"
                       type="text"
                       id="author"
                       name="author"
                       placeholder
                       class="input-xlarge"
                     />
+                    <div
+                      class="alert alert-danger"
+                      v-if="$v.author.$error"
+                    >Author name should be at least 3 symbols long!</div>
                   </div>
                 </div>
                 <br />
@@ -83,14 +91,18 @@
                       style="resize: none;"
                       cols="75"
                       rows="4"
-                      v-model="description"
+                      v-model="$v.description.$model"
                     ></textarea>
+                    <div
+                      class="alert alert-danger"
+                      v-if="$v.description.$error"
+                    >Description should be at least 3 symbols long!</div>
                   </div>
                 </div>
                 <br />
                 <div class="control-group">
                   <div class="controls">
-                    <button class="btn btn-info">Upload</button>
+                    <button class="btn btn-info" :disabled="$v.$invalid">Upload</button>
                   </div>
                 </div>
               </fieldset>
@@ -105,6 +117,7 @@
 <script>
 import Spinner from "./../../components/common/Spinner";
 import { uploadVideo } from "./../../mixins/services/videoService";
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "upload-video",
@@ -139,6 +152,11 @@ export default {
           this.showNotification("error", err.response.data.message);
         });
     }
+  },
+  validations: {
+    title: { minLength: minLength(3), required },
+    author: { minLength: minLength(3), required },
+    description: { minLength: minLength(3), required }
   }
 };
 </script>
