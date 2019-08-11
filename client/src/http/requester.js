@@ -1,52 +1,29 @@
 import axios from "axios";
 
-// axios.interceptors.response.use(function (response) {
-//   return response;
-// }, function(err) {
-//   const { message } = err.response.data;
-//   console.log(message);
-//   return Promise.reject(err);
-// });
-
 const defaultHeaders = {
   'Content-Type': 'application/json'
 };
 
-const doGet =(url, headers) => {
+const doRequest = (method, url, headers, data) => {  
   if(!headers) {
     headers = defaultHeaders;
   }
 
   const options = {
-    method: "GET",
+    method: method,
     headers,
-    url
+    url,
+    data
   };
 
   return axios(options);
 }
 
-const doPost = (url, headers, data) => {
-  const options = {
-    method: "POST",
-    headers,
-    data,
-    url
-  };
+const doGet =(url, headers) => doRequest("GET", url, headers);
 
-  return axios(options);
-};
+const doPost = (url, headers, data) => doRequest("POST", url, headers, data);
 
-const doDelte = (url, headers, data) => {
-  const options = {
-    method: "DELETE",
-    headers,
-    data,
-    url
-  };
-
-  return axios(options);
-}
+const doDelte = (url, headers, data) => doRequest("DELETE", url, headers, data);
 
 export default {
   doGet,
