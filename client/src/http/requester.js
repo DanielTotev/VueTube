@@ -37,7 +37,19 @@ const doPost = (url, headers, data) => {
   return axios(options);
 };
 
+const doDelte = (url, headers, data) => {
+  const options = {
+    method: "DELETE",
+    headers,
+    data,
+    url
+  };
+
+  return axios(options);
+}
+
 export default {
   doGet,
-  doPost
+  doPost,
+  doDelte
 };

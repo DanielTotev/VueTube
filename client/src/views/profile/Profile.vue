@@ -23,7 +23,7 @@
               <td>
                 <a href="#" class="btn btn-info">Edit</a>
                 <router-link :to="`/video/details/${video._id}`" class="btn btn-success">Details</router-link>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <router-link :to="`/video/delete/${video._id}`" class="btn btn-danger">Delete</router-link>
               </td>
             </tr>
           </tbody>

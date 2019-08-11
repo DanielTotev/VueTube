@@ -7,7 +7,8 @@ const authHeader = {
 
 const VIDEO_UPLOAD_URL = "http://localhost:3000/api/videos/upload";
 const VIDEO_GET_ALL_URL = "http://localhost:3000/api/videos/getAll";
-const VIDEO_DETAILS_URL = "http://localhost:3000/api/videos/details/"
+const VIDEO_DETAILS_URL = "http://localhost:3000/api/videos/details/";
+const VIDEO_DELETE_URL = "http://localhost:3000/api/videos/delete/";
 
 export const uploadVideo = {
     methods: {
@@ -36,6 +37,14 @@ export const getDetails = {
     methods: {
         loadVideoDetailsById(id) {
             return requester.doGet(VIDEO_DETAILS_URL + id, authHeader);
+        }
+    }
+}
+
+export const deleteVideo = {
+    methods: {
+        deleteVideoById(id) {
+            return requester.doDelte(VIDEO_DELETE_URL + id, authHeader);
         }
     }
 }
