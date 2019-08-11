@@ -4,8 +4,8 @@
     <p class="h3">The simplest, easiest to use, most comfortable Multimedia Application.</p>
     <hr class="my-3" />
     <p>
-      <a href="/login">Login</a> if you have an account or
-      <a href="/register">Register</a> now and start tubing.
+      <router-link to="/login">Login</router-link> if you have an account or
+      <router-link to="/register">Register</router-link> now and start tubing.
     </p>
   </div>
 </template>
