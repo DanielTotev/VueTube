@@ -61,8 +61,8 @@ router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), a
         if(!videoToDelete) {
             return res.status(404);
         }
-        await cloudinary.uploader.destroy(videoToDelete.thumbnail);
-        await cloudinary.uploader.destroy(videoToDelete.link);
+        await cloudinary.api.delete_resource(videoToDelete.thumbnail);
+        await cloudinary.api.delete_resource(videoToDelete.link);
         await Video.deleteOne({ _id: videoToDelete._id });
         return res.status(200);
     } catch(err) {

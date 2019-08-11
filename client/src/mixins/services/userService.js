@@ -27,4 +27,6 @@ export const saveUserCredentials = authtoken => localStorage.setItem('authtoken'
 
 export const clearCredentials = () => localStorage.clear();
 
-export const getToken = () => localStorage.getItem('authtoken');
+export const getAuthHeaders = () => ({
+  "Authorization": `Bearer ${localStorage.getItem('authtoken')}`
+});

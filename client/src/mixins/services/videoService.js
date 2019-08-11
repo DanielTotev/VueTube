@@ -1,9 +1,5 @@
 import requester from "./../../http/requester";
-import { getToken } from "./userService";
-
-const authHeader = {
-    "Authorization": `Bearer ${getToken()}`
-};
+import { getAuthHeaders } from "./userService";
 
 const VIDEO_UPLOAD_URL = "http://localhost:3000/api/videos/upload";
 const VIDEO_GET_ALL_URL = "http://localhost:3000/api/videos/getAll";
@@ -20,7 +16,7 @@ export const uploadVideo = {
             formData.append('thumbnail', this.thumbnail, this.thumbnail.name);
             formData.append('description', this.description);
 
-            return requester.doPost(VIDEO_UPLOAD_URL, authHeader, formData);
+            return requester.doPost(VIDEO_UPLOAD_URL, getAuthHeaders(), formData);
         }
     }
 };
@@ -28,7 +24,7 @@ export const uploadVideo = {
 export const getVideos = {
     methods: {
         getAllVideos() {
-            return requester.doGet(VIDEO_GET_ALL_URL, authHeader);
+            return requester.doGet(VIDEO_GET_ALL_URL, getAuthHeaders());
         }
     }
 }
@@ -36,7 +32,7 @@ export const getVideos = {
 export const getDetails = {
     methods: {
         loadVideoDetailsById(id) {
-            return requester.doGet(VIDEO_DETAILS_URL + id, authHeader);
+            return requester.doGet(VIDEO_DETAILS_URL + id, getAuthHeaders());
         }
     }
 }
@@ -44,7 +40,7 @@ export const getDetails = {
 export const deleteVideo = {
     methods: {
         deleteVideoById(id) {
-            return requester.doDelte(VIDEO_DELETE_URL + id, authHeader);
+            return requester.doDelte(VIDEO_DELETE_URL + id, getAuthHeaders());
         }
     }
 }
