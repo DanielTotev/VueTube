@@ -47,7 +47,7 @@ export default {
       this.deleteVideoById(id)
         .then(() => {
           this.showNotification("success", "Video Deleted successfully!");
-          this.$router.push("home");
+          this.$router.push("/home");
         })
         .catch(err => {
           console.log(err);

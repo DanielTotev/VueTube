@@ -145,7 +145,7 @@ export default {
       this.postVideo()
         .then(res => {
           console.log(res);
-          this.showNotification("success", "User registered successfully!");
+          this.showNotification("success", "Video created successfully!");
           this.$router.push("login");
         })
         .catch(err => {
