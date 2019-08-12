@@ -21,7 +21,7 @@
               <td>{{video.title}}</td>
               <td>{{video.author}}</td>
               <td>
-                <a href="#" class="btn btn-info">Edit</a>
+                <router-link :to="`/video/edit/${video._id}`" class="btn btn-info">Edit</router-link>
                 <router-link :to="`/video/details/${video._id}`" class="btn btn-success">Details</router-link>
                 <router-link :to="`/video/delete/${video._id}`" class="btn btn-danger">Delete</router-link>
               </td>

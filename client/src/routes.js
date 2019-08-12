@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import UploadVideo from "./views/video/UploadVideo";
 import VideoDetails from "./views/video/VideoDetails";
 import VideoDelete from "./views/video/VideoDelete";
+import VideoEdit from "./views/video/VideoEdit";
 import Profile from "./views/profile/Profile";
 
 export const routes = [
@@ -53,6 +54,13 @@ export const routes = [
     {
         path: '/video/delete/:id',
         component: VideoDelete,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/video/edit/:id',
+        component: VideoEdit,
         meta: {
             requiresAuth: true
         }
