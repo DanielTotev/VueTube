@@ -82,6 +82,8 @@ export default {
           this.$router.push('home');
           this.$emit('login');
           this.showNotification('success', 'Login successfully!')
+        }).catch(err => {
+          this.showNotification('error', err.response.data.message);
         });
     }
   }
