@@ -13,7 +13,7 @@
             <form
               class="form-inline"
               enctype="multipart/form-data"
-              @submit.prevent="handleFormSubmit"
+              @submit.prevent="handleSubmit"
             >
               <fieldset>
                 <div class="control-group">
@@ -102,7 +102,7 @@
                 <br />
                 <div class="control-group">
                   <div class="controls">
-                    <button class="btn btn-info" :disabled="$v.$invalid">Upload</button>
+                    <button class="btn btn-info" :disabled="$v.$invalid">Edit</button>
                   </div>
                 </div>
               </fieldset>
@@ -117,7 +117,7 @@
 <script>
 import Spinner from "./../../components/common/Spinner";
 import { required, minLength } from "vuelidate/lib/validators";
-import { getDetails } from "./../../mixins/services/videoService";
+import { getDetails, uploadVideo, updateVideo } from "./../../mixins/services/videoService";
 
 export default {
   name: 'video-edit',
@@ -130,7 +130,7 @@ export default {
   components: {
     Spinner
   },
-  mixins: [getDetails],
+  mixins: [getDetails, updateVideo],
   created() {
     const id = this.$route.params.id;
     this.loadVideoDetailsById(id)
@@ -142,6 +142,17 @@ export default {
     handleFileInputChange(event) {
       const name = event.target.name;
       this.video[name] = event.target.files[0];
+    },
+    handleSubmit() {
+      const id = this.$route.params.id;
+      this.isFormSubmitted = true;
+      this.updateVideoById(id)
+        .then(res => {
+          this.showNotification("success", "Video updated successfully!");
+          this.$router.push("/home");
+        }).catch(err => {
+          this.showNotification("error", err.response.data.message);
+        });
     }
   },
   validations: {

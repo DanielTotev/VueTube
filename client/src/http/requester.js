@@ -25,8 +25,12 @@ const doPost = (url, headers, data) => doRequest("POST", url, headers, data);
 
 const doDelte = (url, headers, data) => doRequest("DELETE", url, headers, data);
 
+const doPut = (url, headers, data) => doRequest("PUT", url, headers, data);
+
+
 export default {
   doGet,
   doPost,
-  doDelte
+  doDelte,
+  doPut
 };

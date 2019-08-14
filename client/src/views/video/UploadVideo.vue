@@ -146,7 +146,7 @@ export default {
         .then(res => {
           console.log(res);
           this.showNotification("success", "Video created successfully!");
-          this.$router.push("login");
+          this.$router.push("/home");
         })
         .catch(err => {
           this.showNotification("error", err.response.data.message);
