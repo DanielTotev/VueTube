@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
+const dotEnv = require('dotenv');
 const port = process.env.PORT || 3000;
+
+dotEnv.config({ path: './config/config.env' });
 
 app.use(cors());
 
