@@ -10,8 +10,8 @@ router.post('/upload', passport.authenticate('jwt', { session: false }),  async 
     const thumbnail  = req.files.thumbnail;
     const video = req.files.video;
     try {
-        const thumbnailUploadResult = await cloudUtils.uploadImage(thumbnail.tempFilePath);
-        const videoUploadResult = await cloudUtils.uploadVideo(video.tempFilePath);
+        const thumbnailUploadResult = await cloudUtils.uploadImage(thumbnail);
+        const videoUploadResult = await cloudUtils.uploadVideo(video);
 
         const createdVideo = await Video.create({
             title,
@@ -83,13 +83,13 @@ router.put('/edit/:id', passport.authenticate('jwt', { session: false }), async 
 
             if(video) {
                 cloudUtils.deleteResource(videoFromDb.link);
-                const videoUploadResult = await cloudUtils.uploadVideo(video.tempFilePath);
+                const videoUploadResult = await cloudUtils.uploadVideo(video);
                 videoFromDb.link = videoUploadResult.url;
             }
 
             if(thumbnail) {
                 cloudUtils.deleteResource(videoFromDb.thumbnail);
-                const thumbnailUploadResult = cloudUtils.uploadImage(thumbnail.tempFilePath);
+                const thumbnailUploadResult = cloudUtils.uploadImage(thumbnail);
                 videoFromDb.thumbnail = thumbnailUploadResult.url;
             }
         }

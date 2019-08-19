@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <router-link class="navbar-brand h4" to="/">MeTube&trade;</router-link>
+    <router-link class="navbar-brand h4" to="/">VueTube&trade;</router-link>
 
     <div class="collapse navbar-collapse justify-content-end row" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
