@@ -1,9 +1,7 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
 const User = require('./../models/User');
 const userDataValidaton = require('./../utils/validation/userDataValidation');
-const constants = require('./../constants/appConstants');
 
 router.post('/register', async (req, res) => {
     try {
@@ -53,7 +51,7 @@ router.post('/login', async (req, res) => {
         }
     
         const payload = { _id: user._id, email: user.email };
-        const token =  await jwt.sign(payload, constants.SECRET_OR_KEY , { expiresIn: 3600 });
+        const token =  await jwt.sign(payload, process.env.SECRET_OR_KEY);
     
         res.json({ token: `Bearer: ${token}` });
     } catch(err) {
@@ -61,8 +59,5 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/test', passport.authenticate('jwt', { session: false }), (req, res) => {
-    res.status(200).send('Congrats!');
-});
 
 module.exports = router;
