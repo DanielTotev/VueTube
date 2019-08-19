@@ -1,13 +1,8 @@
 const router = require('express').Router();
-const cloudinary = require('cloudinary').v2;
+const cloudUtils = require('./../utils/cloudUtils');
 const Video = require('./../models/Video');
 const passport = require('passport');
 
-cloudinary.config({
-    cloud_name: 'dbtbhnqfk', 
-    api_key: '423416941363816', 
-    api_secret: '9MyyftE1ShXCOBZKHK8If0qUmEc' 
-});
 
 router.post('/upload', passport.authenticate('jwt', { session: false }),  async (req, res) => {
     const  { title, author, description } = req.body;
@@ -15,8 +10,8 @@ router.post('/upload', passport.authenticate('jwt', { session: false }),  async 
     const thumbnail  = req.files.thumbnail;
     const video = req.files.video;
     try {
-        const thumbnailUploadResult = await cloudinary.uploader.upload(thumbnail.tempFilePath);
-        const videoUploadResult = await cloudinary.uploader.upload(video.tempFilePath, { resource_type: "video" });
+        const thumbnailUploadResult = await cloudUtils.uploadImage(thumbnail.tempFilePath);
+        const videoUploadResult = await cloudUtils.uploadVideo(video.tempFilePath);
 
         const createdVideo = await Video.create({
             title,
@@ -61,8 +56,8 @@ router.delete('/delete/:id', passport.authenticate('jwt', { session: false }), a
         if(!videoToDelete) {
             return res.status(404).send({ message: 'Not Found' });
         }
-        await cloudinary.api.delete_resources(videoToDelete.thumbnail);
-        await cloudinary.api.delete_resources(videoToDelete.link);
+        await cloudUtils.deleteResource(videoToDelete.thumbnail);
+        await cloudUtils.deleteResource(videoToDelete.link);
         await Video.deleteOne({ _id: videoToDelete._id });
         return res.status(200).json({ message: 'Success' });
     } catch(err) {
@@ -87,14 +82,14 @@ router.put('/edit/:id', passport.authenticate('jwt', { session: false }), async 
             const { video, thumbnail } = req.files;
 
             if(video) {
-                await cloudinary.api.delete_resources(videoFromDb.link);
-                const videoUploadResult = await cloudinary.uploader.upload(video.tempFilePath, { resource_type: "video" });
+                cloudUtils.deleteResource(videoFromDb.link);
+                const videoUploadResult = await cloudUtils.uploadVideo(video.tempFilePath);
                 videoFromDb.link = videoUploadResult.url;
             }
 
             if(thumbnail) {
-                await cloudinary.api.delete_resources(videoFromDb.thumbnail);
-                const thumbnailUploadResult = await cloudinary.uploader.upload(thumbnail.tempFilePath);
+                cloudUtils.deleteResource(videoFromDb.thumbnail);
+                const thumbnailUploadResult = cloudUtils.uploadImage(thumbnail.tempFilePath);
                 videoFromDb.thumbnail = thumbnailUploadResult.url;
             }
         }
