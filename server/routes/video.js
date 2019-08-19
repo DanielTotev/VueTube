@@ -82,14 +82,14 @@ router.put('/edit/:id', passport.authenticate('jwt', { session: false }), async 
             const { video, thumbnail } = req.files;
 
             if(video) {
-                cloudUtils.deleteResource(videoFromDb.link);
+                await cloudUtils.deleteResource(videoFromDb.link);
                 const videoUploadResult = await cloudUtils.uploadVideo(video);
                 videoFromDb.link = videoUploadResult.url;
             }
 
             if(thumbnail) {
-                cloudUtils.deleteResource(videoFromDb.thumbnail);
-                const thumbnailUploadResult = cloudUtils.uploadImage(thumbnail);
+                await cloudUtils.deleteResource(videoFromDb.thumbnail);
+                const thumbnailUploadResult = await cloudUtils.uploadImage(thumbnail);
                 videoFromDb.thumbnail = thumbnailUploadResult.url;
             }
         }
