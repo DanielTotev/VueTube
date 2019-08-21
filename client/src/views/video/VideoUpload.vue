@@ -11,7 +11,7 @@ import VideoDataForm from "./../../components/video/VideoDataForm";
 import { uploadVideo } from "./../../mixins/services/videoService";
 
 export default {
-  name: "upload-video",
+  name: "video-upload",
   data() {
     return {
       isFormSubmitted: false

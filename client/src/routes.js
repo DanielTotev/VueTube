@@ -2,7 +2,7 @@ import Index from "./views/Index";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Home from "./views/Home";
-import UploadVideo from "./views/video/UploadVideo";
+import VideoUpload from "./views/video/VideoUpload";
 import VideoDetails from "./views/video/VideoDetails";
 import VideoDelete from "./views/video/VideoDelete";
 import VideoEdit from "./views/video/VideoEdit";
@@ -39,7 +39,7 @@ export const routes = [
     },
     {
         path: '/video-upload',
-        component: UploadVideo,
+        component: VideoUpload,
         meta: {
             requiresAuth: true
         }

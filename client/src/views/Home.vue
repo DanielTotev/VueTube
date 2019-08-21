@@ -33,7 +33,6 @@ export default {
 		this.getAllVideos()
 			.then(res => {
 				this.videos = res.data;
-				console.log(this.videos);
 			});
 	}
 }
