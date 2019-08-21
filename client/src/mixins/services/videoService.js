@@ -7,9 +7,9 @@ const VIDEO_DETAILS_URL = "http://localhost:3000/api/videos/details/";
 const VIDEO_DELETE_URL = "http://localhost:3000/api/videos/delete/";
 const VIDEO_UPDATE_URL = "http://localhost:3000/api/videos/edit/";
 
-export const uploadVideo = {
+export const buildVideoFormData = {
     methods: {
-        postVideo() {
+        buildFormData() {
             const formData = new FormData();
             formData.append('title', this.title);
             formData.append('author', this.author);
@@ -17,6 +17,14 @@ export const uploadVideo = {
             formData.append('thumbnail', this.thumbnail, this.thumbnail.name);
             formData.append('description', this.description);
 
+            return formData;
+        }
+    }
+}
+
+export const uploadVideo = {
+    methods: {
+        postVideo(formData) {
             return requester.doPost(VIDEO_UPLOAD_URL, getAuthHeaders(), formData);
         }
     }
@@ -48,17 +56,7 @@ export const deleteVideo = {
 
 export const updateVideo = {
     methods: {
-        updateVideoById(id) {
-            const formData = new FormData();
-            formData.append('title', this.video.title);
-            formData.append('author', this.video.author);
-            if(this.video.video) {
-                formData.append('video', this.video.video, this.video.video.name);
-            }
-            if(this.video.thumbnail.name) {
-                formData.append('thumbnail', this.video.thumbnail, this.video.thumbnail.name);
-            }
-            formData.append('description', this.video.description);
+        updateVideoById(id, formData) {
             return requester.doPut(VIDEO_UPDATE_URL + id, getAuthHeaders(), formData);
         }
     }
