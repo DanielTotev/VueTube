@@ -34,6 +34,10 @@ export const notify = {
   methods: {
     showNotification(type, text) {
       this.$emit('message-show', { text: text, type: type });
+    },
+    notifyWithRedirect(message, url) {
+      this.showNotification('success', message);
+      this.$router.push(url);
     }
   }
 }

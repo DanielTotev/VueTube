@@ -27,9 +27,7 @@ export default {
       this.isFormSubmitted = true;
       this.postVideo(formData)
         .then(res => {
-          console.log(res);
-          this.showNotification("success", "Video created successfully!");
-          this.$router.push("/home");
+          this.notifyWithRedirect("Video created successfully!", "/home");
         })
         .catch(err => {
           this.showNotification("error", err.response.data.message);

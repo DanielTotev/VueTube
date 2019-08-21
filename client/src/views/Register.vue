@@ -90,8 +90,7 @@ export default {
     handleSubmit() {
       this.register()
         .then(data => {
-          this.showNotification('success', 'User registered successfully!')
-          this.$router.push('login');
+          this.notifyWithRedirect("User registered successfully", "/login");
         }).catch(err => {
           this.showNotification('error', err.response.data.message);
         })

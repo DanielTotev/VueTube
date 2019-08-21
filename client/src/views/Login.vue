@@ -79,9 +79,8 @@ export default {
         .then(({ data }) => {
           const { token } = data;
           saveUserCredentials(token);
-          this.$router.push('home');
           this.$emit('login');
-          this.showNotification('success', 'Login successfully!')
+          this.notifyWithRedirect("Login successfully!", "/home");
         }).catch(err => {
           this.showNotification('error', err.response.data.message);
         });

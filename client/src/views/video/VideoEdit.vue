@@ -39,8 +39,7 @@ export default {
       this.isFormSubmitted = true;
       this.updateVideoById(id, formData)
         .then(res => {
-          this.showNotification("success", "Video updated successfully!");
-          this.$router.push("/home");
+          this.notifyWithRedirect("Video updated successfully!", "/home");
         }).catch(err => {
           this.showNotification("error", err.response.data.message);
         });
