@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { buildVideoFormData } from "./../../mixins/services/videoService";
+import { buildVideoFormData } from "./../../services/videoService";
 import { required, minLength } from "vuelidate/lib/validators";
 
 export default {

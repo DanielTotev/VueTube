@@ -1,4 +1,4 @@
-import requester from "./../../http/requester";
+import requester from './../http/requester';
 import { getAuthHeaders } from "./userService";
 
 const VIDEO_UPLOAD_URL = "http://localhost:3000/api/videos/upload";

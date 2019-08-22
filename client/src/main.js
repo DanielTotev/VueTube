@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Vuelidate from "vuelidate";
 import App from "./App.vue";
 import vueRouter from "./router";
-import { notify } from "./mixins/services/notificationService";
+import { notify } from "./services/notificationService";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 

@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { loginUser, saveUserCredentials } from './../mixins/services/userService';
+import { loginUser, saveUserCredentials } from './../services/userService';
 import { email, required, minLength } from 'vuelidate/lib/validators';
 
 export default {

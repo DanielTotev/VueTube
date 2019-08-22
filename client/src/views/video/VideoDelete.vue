@@ -11,7 +11,7 @@
 
 <script>
 import VideoData from "./../../components/video/VideoData";
-import { deleteVideo } from "./../../mixins/services/videoService";
+import { deleteVideo } from "./../../services/videoService";
 
 export default {
   name: "video-delete",

@@ -13,8 +13,8 @@
 import Message from "./components/common/Message";
 import Navigation from "./components/common/Navigation";
 import Footer from "./components/common/Footer";
-import { messagingSetUp } from "./mixins/services/notificationService";
-import { isAuthenticated, clearCredentials } from "./mixins/services/userService";
+import { messagingSetUp } from "./services/notificationService";
+import { isAuthenticated, clearCredentials } from "./services/userService";
 import { setTimeout } from 'timers';
 
 export default {

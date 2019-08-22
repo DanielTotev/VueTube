@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import { isAuthenticated } from './mixins/services/userService';
+import { isAuthenticated } from './services/userService';
 import { routes } from './routes';
 
 const vueRouter = new VueRouter({

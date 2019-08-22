@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { profileService } from "./../../mixins/services/profileService";
+import { profileService } from "./../../services/profileService";
 
 export default {
   name: "profile",
@@ -42,16 +42,15 @@ export default {
     return {
       email: "",
       videos: ""
-    }
+    };
   },
   mixins: [profileService],
   created() {
-    this.getProfileData()
-      .then(res => {
-        const  { email, videos } = res.data;
-        this.email = email;
-        this.videos = videos;
-      })
+    this.getProfileData().then(res => {
+      const { email, videos } = res.data;
+      this.email = email;
+      this.videos = videos;
+    });
   }
 };
 </script>

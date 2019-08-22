@@ -11,7 +11,7 @@
 import Spinner from "./../../components/common/Spinner";
 import VideoDataForm from "./../../components/video/VideoDataForm";
 import { required, minLength } from "vuelidate/lib/validators";
-import { getDetails, uploadVideo, updateVideo } from "./../../mixins/services/videoService";
+import { getDetails, uploadVideo, updateVideo } from "./../../services/videoService";
 
 export default {
   name: 'video-edit',

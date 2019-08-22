@@ -1,4 +1,4 @@
-import requester from '../../http/requester';
+import requester from './../http/requester';
 
 const REGISTER_URL = "http://localhost:3000/api/users/register";
 const LOGIN_URL = "http://localhost:3000/api/users/login";

@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { registerUser } from './../mixins/services/userService';
+import { registerUser } from './../services/userService';
 import { email, required, minLength, sameAs } from "vuelidate/lib/validators";
 
 export default {

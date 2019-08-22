@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getDetails } from "./../../mixins/services/videoService";
+import { getDetails } from "./../../services/videoService";
 
 export default {
   name: "video-data",

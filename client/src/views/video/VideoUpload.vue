@@ -8,7 +8,7 @@
 <script>
 import Spinner from "./../../components/common/Spinner";
 import VideoDataForm from "./../../components/video/VideoDataForm";
-import { uploadVideo } from "./../../mixins/services/videoService";
+import { uploadVideo } from "./../../services/videoService";
 
 export default {
   name: "video-upload",

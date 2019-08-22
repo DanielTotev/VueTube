@@ -16,7 +16,7 @@
 
 <script>
 import VideoHomePagePartial from "@/components/video/VideoHomePagePartial"
-import { getVideos } from "./../mixins/services/videoService";
+import { getVideos } from "./../services/videoService";
 
 export default {
 	name: 'home',
