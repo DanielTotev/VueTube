@@ -26,4 +26,15 @@ require('./config/db-config')();
 
 require('./config/routes-config')(app);
 
+// handle production
+if(process.env.NODE_ENV === 'production') {
+    // static folder
+    app.use(express.static(__dirname + '/public/'));
+
+    // Handle SPA
+    app.get(/.*/, (req, res)=> {
+        res.sendFile(__dirname + '/public/index.html');
+    });
+}
+
 app.listen(port, () => console.log(`Server is up and running on port ${port}`));
