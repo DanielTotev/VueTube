@@ -1,11 +1,11 @@
 import requester from './../http/requester';
 import { getAuthHeaders } from "./userService";
 
-const VIDEO_UPLOAD_URL = "http://localhost:3000/api/videos/upload";
-const VIDEO_GET_ALL_URL = "http://localhost:3000/api/videos/getAll";
-const VIDEO_DETAILS_URL = "http://localhost:3000/api/videos/details/";
-const VIDEO_DELETE_URL = "http://localhost:3000/api/videos/delete/";
-const VIDEO_UPDATE_URL = "http://localhost:3000/api/videos/edit/";
+const VIDEO_UPLOAD_URL = "/api/videos/upload";
+const VIDEO_GET_ALL_URL = "/api/videos/getAll";
+const VIDEO_DETAILS_URL = "/api/videos/details/";
+const VIDEO_DELETE_URL = "/api/videos/delete/";
+const VIDEO_UPDATE_URL = "/api/videos/edit/";
 
 export const buildVideoFormData = {
     methods: {

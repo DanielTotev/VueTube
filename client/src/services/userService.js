@@ -1,7 +1,7 @@
 import requester from './../http/requester';
 
-const REGISTER_URL = "http://localhost:3000/api/users/register";
-const LOGIN_URL = "http://localhost:3000/api/users/login";
+const REGISTER_URL = "/api/users/register";
+const LOGIN_URL = "/api/users/login";
 
 export const isAuthenticated  = () => localStorage.getItem('authtoken') != null;
 
