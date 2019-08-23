@@ -1,6 +1,6 @@
 <template>
   <div class="jumbotron">
-    <p class="h1 display-3">Welcome to MeTube&trade;!</p>
+    <p class="h1 display-3">Welcome to VueTube&trade;!</p>
     <p class="h3">The simplest, easiest to use, most comfortable Multimedia Application.</p>
     <hr class="my-3" />
     <p>
