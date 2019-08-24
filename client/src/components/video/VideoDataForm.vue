@@ -100,7 +100,7 @@
               <br />
               <div class="control-group">
                 <div class="controls">
-                  <button class="btn btn-info" :disabled="$v.$invalid">Upload</button>
+                  <button class="btn btn-info" :disabled="$v.$invalid">{{submitBtnText}}</button>
                 </div>
               </div>
             </fieldset>
@@ -124,6 +124,11 @@ export default {
       video: null,
       thumbnail: null,
       description: ""
+    }
+  },
+  computed: {
+    submitBtnText() {
+      return this.$route.path.includes("upload") ? "Upload" : "Edit";
     }
   },
   props: {
