@@ -13,8 +13,12 @@ export const buildVideoFormData = {
             const formData = new FormData();
             formData.append('title', this.title);
             formData.append('author', this.author);
-            formData.append('video', this.video, this.video.name);
-            formData.append('thumbnail', this.thumbnail, this.thumbnail.name);
+            if(this.video) {
+                formData.append('video', this.video, this.video.name);
+            }
+            if(this.thumbnail) {
+                formData.append('thumbnail', this.thumbnail, this.thumbnail.name);
+            }
             formData.append('description', this.description);
 
             return formData;
