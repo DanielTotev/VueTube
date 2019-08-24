@@ -1,5 +1,5 @@
 # VueTube
-Vue.js Fundamental Course project
+Vue.js Fundamentals Course project
 
 Idea: Create an app for video sharing with Vue.js, Express.js and MongoDb. Used cloudinary for file upload.
 
